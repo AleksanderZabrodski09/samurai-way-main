@@ -1,7 +1,7 @@
 .app-wrapper {
     width: 100%;
     margin: 0 auto;
-display: grid;
+    display: grid;
     grid-template-areas:
     "header header header"
     "nav main main";
@@ -9,18 +9,22 @@ display: grid;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 }
+
 .header {
-grid-area: header;
+    grid-area: header;
     background-color: aqua;
 }
+
 .header img {
     width: 40px;
     height: 40px;
 }
+
 .nav {
     grid-area: nav;
     background-color: chartreuse;
 }
+
 .main {
     grid-area: main;
     background-color: coral;
