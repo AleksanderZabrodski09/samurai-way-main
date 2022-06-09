@@ -15,10 +15,8 @@ export const MyPosts = (props: MyPostsType) => {
         <button>Send</button>
       </div>
       <div className={s.posts}>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
+        <Post message={"How are you?"} likeCount={19}/>
+        <Post message={"It's my first post"} likeCount={15}/>
       </div>
     </div>
   )
