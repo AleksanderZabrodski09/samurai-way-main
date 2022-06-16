@@ -2,7 +2,9 @@ import React from 'react';
 import s from './Profile.module.css';
 import {MyPosts} from './MyPosts/MyPosts';
 
-
+// type ProfileType = {
+//
+// }
 export const Profile = () => {
   return (
     <main className={s.main}>
