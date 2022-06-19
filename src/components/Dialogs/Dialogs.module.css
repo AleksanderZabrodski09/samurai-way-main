@@ -15,7 +15,9 @@
 .dialogsItems .active {
     color: gold
 }
-
+/*.dialog:visited {*/
+/*    color: #94efdc*/
+/*}*/
 .dialog {
 
 }

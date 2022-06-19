@@ -7,8 +7,9 @@
     "nav main main";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
-
+    /*grid-gap: 10px;*/
+    column-gap: 10px;
+    background-color: #ff9801;
 }
 .appWrapperContent {
     grid-area: main;
