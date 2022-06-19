@@ -2,37 +2,50 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from 'react-router-dom';
 
+type DialogItemType={
+  name: string
+  id:number
+}
 
-export const Dialogs = () => {
+const DialogItem =(props: DialogItemType)=>{
+  let path = '/dialogs/' + props.id;
+  return (
+      <div className={s.dialog}>
+        <NavLink to={path} activeClassName={s.active}>{props.name}</NavLink>
+      </div>
+    )
+}
+
+type MessageType = {
+  message: string
+}
+const Message =(props:MessageType)=>{
+  return(
+    <div className={s.message}>{props.message}</div>
+  )
+}
+
+type DialogsType = {
+
+}
+
+export const Dialogs = (props:DialogsType) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>
-        <div className={s.dialog + ' ' + s.active}>
-          <NavLink to={'/dialogs/1'} activeClassName={s.active}>Robert</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to={'/dialogs/2'} activeClassName={s.active}>Andrzej</NavLink>
-
-        </div>
-        <div className={s.dialog}>
-          <NavLink to={'/dialogs/3'} activeClassName={s.active}>Pawel</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to={'/dialogs/4'} activeClassName={s.active}>Marek</NavLink>
-        </div>
-        <div className={s.dialog}>
-          <NavLink to={'/dialogs/5'} activeClassName={s.active}>Barbara</NavLink>
-
-        </div>
-        <div className={s.dialog}>
-          <NavLink to={'/dialogs/6'} activeClassName={s.active}>Jack</NavLink>
-
-        </div>
+        <DialogItem id={1} name={'Robert'}/>
+        <DialogItem id={2} name={'Andrzej'}/>
+        <DialogItem id={3} name={'Pawel'}/>
+        <DialogItem id={4} name={'Marek'}/>
+        <DialogItem id={5} name={'Barbara'}/>
+        <DialogItem id={6} name={'Jack'}/>
       </div>
       <div className={s.messages}>
-        <div className={s.message}>Hi</div>
-        <div className={s.message}>How are you going?</div>
-        <div className={s.message}>i am fine</div>
+        <Message message={'Hi'}/>
+        <Message message={'How are you going?'}/>
+        <Message message={'I am fine'}/>
+        <Message message={'I am Ok'}/>
+        <Message message={'I am great!'}/>
 
       </div>
     </div>
