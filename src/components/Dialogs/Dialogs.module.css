@@ -1,0 +1,29 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    color: white;
+
+}
+
+.dialogsItems {
+    font-family: 'Roboto';
+    padding: 10px;
+
+}
+
+.dialogsItems .active {
+    color: gold
+}
+
+.dialog a{
+    color: white;
+}
+
+.messages {
+    padding: 10px;
+
+}
+
+.message {
+
+}
