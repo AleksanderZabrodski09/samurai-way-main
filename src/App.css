@@ -12,7 +12,8 @@
 }
 .appWrapperContent {
     grid-area: main;
-    background-color: coral;
+    background-color: #002635;
+    color: white;
 }
 
 button {
