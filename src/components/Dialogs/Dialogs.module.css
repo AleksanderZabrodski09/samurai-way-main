@@ -7,7 +7,6 @@
 
 .dialogsItems {
     font-family: "Algerian";
-
     padding: 10px;
 
 }
@@ -15,11 +14,8 @@
 .dialogsItems .active {
     color: gold
 }
-/*.dialog:visited {*/
-/*    color: #94efdc*/
-/*}*/
-.dialog {
-
+.dialog a{
+    color: white;
 }
 
 .messages {

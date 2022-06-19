@@ -11,21 +11,21 @@ export const Dialogs = () => {
           <NavLink to={'/dialogs/1'} activeClassName={s.active}>Robert</NavLink>
         </div>
         <div className={s.dialog}>
-          <NavLink to={'/dialogs/1'} activeClassName={s.active}>Andrzej</NavLink>
+          <NavLink to={'/dialogs/2'} activeClassName={s.active}>Andrzej</NavLink>
 
         </div>
         <div className={s.dialog}>
-          <NavLink to={'/dialogs/2'} activeClassName={s.active}>Pawel</NavLink>
+          <NavLink to={'/dialogs/3'} activeClassName={s.active}>Pawel</NavLink>
         </div>
         <div className={s.dialog}>
-          <NavLink to={'/dialogs/3'} activeClassName={s.active}>Marek</NavLink>
+          <NavLink to={'/dialogs/4'} activeClassName={s.active}>Marek</NavLink>
         </div>
         <div className={s.dialog}>
-          <NavLink to={'/dialogs/4'} activeClassName={s.active}>Barbara</NavLink>
+          <NavLink to={'/dialogs/5'} activeClassName={s.active}>Barbara</NavLink>
 
         </div>
         <div className={s.dialog}>
-          <NavLink to={'/dialogs/5'} activeClassName={s.active}>Jack</NavLink>
+          <NavLink to={'/dialogs/6'} activeClassName={s.active}>Jack</NavLink>
 
         </div>
       </div>
