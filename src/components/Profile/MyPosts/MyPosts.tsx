@@ -8,10 +8,10 @@ type MyPostsType = {
 export const MyPosts = (props: MyPostsType) => {
   return (
 
-    <div className={s.myPosts}>
+    <div className={s.postsBlock}>
       <h2>{props.title}</h2>
       <div>
-        <textarea>new post</textarea>
+        <div><textarea>new post</textarea></div>
         <button>Send</button>
       </div>
       <div className={s.posts}>
