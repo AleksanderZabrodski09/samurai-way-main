@@ -4,13 +4,14 @@ import {Post} from './Post/Post';
 
 type MyPostsType = {
   title: string
+  // posts:PostsType[]
 }
-type postDataType = {
+type PostsType = {
   id: number,
   message: string,
   likeCount: number
 }
-let postData = [
+let posts = [
   {id: 1, message: "How are you?", likeCount: 19},
   {id: 2, message: "It's my first post", likeCount: 15}
 ]
@@ -24,8 +25,8 @@ export const MyPosts = (props: MyPostsType) => {
         <button>Send</button>
       </div>
       <div className={s.posts}>
-        <Post message={postData[0].message} likeCount={postData[0].likeCount}/>
-        <Post message={postData[1].message} likeCount={postData[1].likeCount}/>
+        {posts.map(p=><Post key={p.id} message={p.message} likeCount={p.likeCount}/>)}
+
       </div>
     </div>
   )

@@ -53,26 +53,20 @@ let messageDate = [
   {id: 4, message: 'I am Ok'},
   {id: 5, message: 'I am great!'},
 ]
+
+
 export const Dialogs = (props: DialogsType) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>
         {
-          dialogsDate.map((el)=>{
-            return(
-              <DialogItem
-              key={el.id}
-              id={el.id}
-              name={el.name}
-            />)
-          })
+          dialogsDate.map((el)=> <DialogItem key={el.id} id={el.id} name={el.name}/>)
         }
 
-        {/*<DialogItem id={dialogsDate[1].id} name={dialogsDate[1].name}/>*/}
       </div>
       <div className={s.messages}>
-        <Message id={messageDate[0].id} message={messageDate[0].message}/>
-        <Message id={messageDate[1].id} message={messageDate[1].message}/>
+        {messageDate.map(m=><Message key={m.id} id={m.id} message={m.message}/>)}
+
       </div>
     </div>
 
