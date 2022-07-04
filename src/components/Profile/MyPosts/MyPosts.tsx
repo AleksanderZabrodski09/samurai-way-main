@@ -5,6 +5,15 @@ import {Post} from './Post/Post';
 type MyPostsType = {
   title: string
 }
+type postDataType = {
+  id: number,
+  message: string,
+  likeCount: number
+}
+let postData = [
+  {id: 1, message: "How are you?", likeCount: 19},
+  {id: 2, message: "It's my first post", likeCount: 15}
+]
 export const MyPosts = (props: MyPostsType) => {
   return (
 
@@ -15,8 +24,8 @@ export const MyPosts = (props: MyPostsType) => {
         <button>Send</button>
       </div>
       <div className={s.posts}>
-        <Post message={"How are you?"} likeCount={19}/>
-        <Post message={"It's my first post"} likeCount={15}/>
+        <Post message={postData[0].message} likeCount={postData[0].likeCount}/>
+        <Post message={postData[1].message} likeCount={postData[1].likeCount}/>
       </div>
     </div>
   )
