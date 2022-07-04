@@ -3,39 +3,46 @@ import s from './Dialogs.module.css';
 import {NavLink} from 'react-router-dom';
 
 
-export const Dialogs = () => {
+type DialogsType = {}
+
+type DialogsItemType = {
+  id: number
+  name: string
+}
+type MessagesType = {
+  message: string
+}
+
+const DialogsItem = (props: DialogsItemType) => {
+  let path = '/dialogs/' + props.id;
+  return (
+    <div className={s.dialog}>
+      <NavLink to={path} activeClassName={s.active}>{props.name}</NavLink>
+    </div>)
+}
+
+const Messages = (props: MessagesType) => {
+  return (
+    <div className={s.message}>{props.message}</div>)
+}
+
+export const Dialogs = (props: DialogsType) => {
   return (
     <div>
       <div className={s.dialogs}>
         <div className={s.dialogsItems}>
-          <div className={s.dialog + ' ' + s.active}>
-            <NavLink to={'/dialogs/1'} activeClassName={s.active}>Robert</NavLink>
-          </div>
-          <div className={s.dialog}>
-            <NavLink to={'/dialogs/2'} activeClassName={s.active}>Andrzej</NavLink>
-
-          </div>
-          <div className={s.dialog}>
-            <NavLink to={'/dialogs/3'} activeClassName={s.active}>Pawel</NavLink>
-          </div>
-          <div className={s.dialog}>
-            <NavLink to={'/dialogs/4'} activeClassName={s.active}>Marek</NavLink>
-          </div>
-          <div className={s.dialog}>
-            <NavLink to={'/dialogs/5'} activeClassName={s.active}>Barbara</NavLink>
-
-          </div>
-          <div className={s.dialog}>
-            <NavLink to={'/dialogs/6'} activeClassName={s.active}>Jack</NavLink>
-
-          </div>
+          <DialogsItem id={1} name='Robert'/>
+          <DialogsItem id={2} name='Andrzej'/>
+          <DialogsItem id={3} name='Pawel'/>
+          <DialogsItem id={4} name='Marek'/>
+          <DialogsItem id={5} name='Barbara'/>
+          <DialogsItem id={6} name='Jack'/>
         </div>
-        <div className={s.messages}>
-          <div className={s.message}>Hi</div>
-          <div className={s.message}>How are you going?</div>
-          <div className={s.message}>i am fine</div>
-
-        </div>
+      </div>
+      <div className={s.messages}>
+        <Messages message={'Hi'}/>
+        <Messages message={'How are you going?'}/>
+        <Messages message={'I am fine'}/>
       </div>
     </div>
   );
