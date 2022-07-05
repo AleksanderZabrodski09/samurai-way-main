@@ -4,8 +4,8 @@ import s from './News.module.css';
 
 export const News = () => {
   return (
-    <main className={s.main}>
+    <div>
       News
-    </main>
+    </div>
   )
 }

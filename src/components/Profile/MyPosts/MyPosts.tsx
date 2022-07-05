@@ -1,15 +1,14 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from './Post/Post';
+import {PostsType} from '../Profile';
 
 type MyPostsType = {
   title: string
+  posts:PostsType[]
 }
 
-let posts =[
-  {message :"How are you?", likeCount: 19},
-  {message :"It's my first post?", likeCount: 15}
-]
+
 export const MyPosts = (props: MyPostsType) => {
 
   return (
@@ -22,7 +21,7 @@ export const MyPosts = (props: MyPostsType) => {
         <button className={s.button}>Send</button>
       </div>
       <div className={s.posts}>
-        {posts.map(p=> <Post message={p.message} likeCount={p.likeCount}/>)}
+        {props.posts.map(p=> <Post key={p.id} message={p.message} likeCount={p.likeCount}/>)}
       </div>
     </div>
   )
