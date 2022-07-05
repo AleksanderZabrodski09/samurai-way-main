@@ -1,4 +1,6 @@
 import React from 'react';
+import s from './ProfileInfo.module.css';
+
 
 export const ProfileInfo = () => {
   return (
@@ -7,7 +9,7 @@ export const ProfileInfo = () => {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMPihIju0BBCwq0HWOFF-aZo8vlz2FCOl7fg&usqp=CAU"
              alt="image"/>
       </div>
-      <div>ava+desc.</div>
+      <div className={s.description}>ava+desc.</div>
     </div>
   );
 };

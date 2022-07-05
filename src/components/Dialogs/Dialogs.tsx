@@ -49,11 +49,11 @@ export const Dialogs = (props: DialogsType) => {
         <div className={s.dialogsItems}>
           {dialogsDate.map(d=> <DialogsItem key={d.id} id={d.id} name={d.name}/>)}
         </div>
+        <div className={s.messages}>
+          {messagesDate.map(m=><Messages key={m.id} id={m.id} message={m.message}/>)}
+        </div>
       </div>
-      <div className={s.messages}>
-        {messagesDate.map(m=><Messages key={m.id} id={m.id} message={m.message}/>)}
 
-      </div>
     </div>
   );
 };

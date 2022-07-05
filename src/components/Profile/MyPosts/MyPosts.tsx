@@ -5,18 +5,24 @@ import {Post} from './Post/Post';
 type MyPostsType = {
   title: string
 }
-export const MyPosts = (props: MyPostsType) => {
-  return (
 
+let posts =[
+  {message :"How are you?", likeCount: 19},
+  {message :"It's my first post?", likeCount: 15}
+]
+export const MyPosts = (props: MyPostsType) => {
+
+  return (
     <div className={s.myPosts}>
       <h2>{props.title}</h2>
       <div>
-        <textarea>new post</textarea>
-        <button>Send</button>
+        <div>
+          <textarea>new post</textarea>
+        </div>
+        <button className={s.button}>Send</button>
       </div>
       <div className={s.posts}>
-        <Post message={"How are you?"} likeCount={19}/>
-        <Post message={"It's my first post"} likeCount={15}/>
+        {posts.map(p=> <Post message={p.message} likeCount={p.likeCount}/>)}
       </div>
     </div>
   )
