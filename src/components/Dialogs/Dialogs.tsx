@@ -10,6 +10,7 @@ type DialogsItemType = {
   name: string
 }
 type MessagesType = {
+  id:number
   message: string
 }
 
@@ -26,23 +27,32 @@ const Messages = (props: MessagesType) => {
     <div className={s.message}>{props.message}</div>)
 }
 
+let dialogsDate=[
+  {id:1, name:'Robert'},
+  {id:2, name:'Andrzej'},
+  {id:3, name:'Pawel'},
+  {id:4, name:'Marek'},
+  {id:5, name:'Barbara'},
+  {id:6, name:'Jack'}
+]
+let messagesDate=[
+  {id:1, message:'Hi'},
+  {id:2, message:'How are you going?'},
+  {id:3, message:'I am fine'}
+
+]
+
 export const Dialogs = (props: DialogsType) => {
   return (
     <div>
       <div className={s.dialogs}>
         <div className={s.dialogsItems}>
-          <DialogsItem id={1} name='Robert'/>
-          <DialogsItem id={2} name='Andrzej'/>
-          <DialogsItem id={3} name='Pawel'/>
-          <DialogsItem id={4} name='Marek'/>
-          <DialogsItem id={5} name='Barbara'/>
-          <DialogsItem id={6} name='Jack'/>
+          {dialogsDate.map(d=> <DialogsItem key={d.id} id={d.id} name={d.name}/>)}
         </div>
       </div>
       <div className={s.messages}>
-        <Messages message={'Hi'}/>
-        <Messages message={'How are you going?'}/>
-        <Messages message={'I am fine'}/>
+        {messagesDate.map(m=><Messages key={m.id} id={m.id} message={m.message}/>)}
+
       </div>
     </div>
   );
