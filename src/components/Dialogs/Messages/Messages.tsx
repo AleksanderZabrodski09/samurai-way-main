@@ -3,14 +3,14 @@ import s from './../Dialogs.module.css';
 
 
 
-type MessagesType = {
+type MessagesItemType = {
   id:number
   message: string
 }
 
 
 
-export const Messages = (props: MessagesType) => {
+export const Messages = (props: MessagesItemType) => {
   return (
     <div className={s.message}>{props.message}</div>)
 }
