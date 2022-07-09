@@ -2,13 +2,11 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     color: white;
-
 }
 
 .dialogsItems {
     font-family: 'Roboto';
     padding: 10px;
-
 }
 
 .dialogsItems .active {
@@ -18,12 +16,12 @@
 .dialog a{
     color: white;
 }
-
 .messages {
     padding: 10px;
-
+    display: flex;
+    flex-direction: column;
+   align-items: flex-end;
 }
 
-.message {
 
-}
+

@@ -3,8 +3,7 @@ import s from './Dialogs.module.css';
 import {DialogsItem} from './DialogsItem/DialogsItem';
 import {Messages} from './Messages/Messages';
 import {DialogsItemType, MessagesItemType} from '../../redux/state';
-// import {DialogsType} from '../../redux/state';
-// import {dialogsType, messagesType} from '../../App';
+
 
 
 type DialogsType = {

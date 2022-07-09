@@ -1,0 +1,20 @@
+
+.dialog a{
+    color: white;
+}
+.dialog a.active {
+    color: gold
+}
+
+.item{
+    color: greenyellow;
+    margin-top: 10px;
+}
+.item img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
