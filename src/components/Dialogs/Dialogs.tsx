@@ -24,8 +24,7 @@ export const Dialogs = (props: DialogsType) => {
             name={d.name}/>)}
         </div>
         <div className={s.messages}>
-          {props.messages.map(m => <Messages
-            key={m.id} id={m.id} message={m.message}/>)}
+          {props.messages.map((m, i) => <div className={i % 2 === 0 ? s.left : s.right}><Messages key={m.id} id={m.id} message={m.message}/></div>)}
         </div>
       </div>
 

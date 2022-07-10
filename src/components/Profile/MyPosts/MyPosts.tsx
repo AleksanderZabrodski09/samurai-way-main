@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from './Post/Post';
-import {PostsType} from '../../../redux/state';
+import { PostsType} from '../../../redux/state';
 
 type MyPostsType = {
   title: string
@@ -21,7 +21,7 @@ export const MyPosts = (props: MyPostsType) => {
         <button className={s.button}>Send</button>
       </div>
       <div className={s.posts}>
-        {props.posts.map(p=> <Post key={p.id} message={p.message} likeCount={p.likeCount}/>)}
+        {props.posts.map(p=> <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)}
       </div>
     </div>
   )

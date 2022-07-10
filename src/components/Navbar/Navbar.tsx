@@ -1,9 +1,24 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
+import {FriendsNav} from './FriendsNav/FriendsNav';
+import {FriendsNavType} from '../../redux/state'
 
+// export type FriendsType={
+//   id:number
+//   name:string
+// }
+// type NavbarPropsType = {
+//   friends: FriendsType[]
+// }
 
-export const Navbar = () => {
+// let friends :[
+//   {id: 1, name: 'Robert'},
+//   {id: 2, name: 'Barbara'},
+//   {id: 2, name: 'Lena'}
+// ]
+
+export const Navbar = (props: FriendsNavType) => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
@@ -20,6 +35,10 @@ export const Navbar = () => {
       </div>
       <div className={s.item}>
         <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
+      </div>
+      <div className={s.item}>
+        <NavLink to='/friends' activeClassName={s.active}><h2>Friends</h2></NavLink>
+        <FriendsNav friends={props.friends}/>
       </div>
     </nav>
   )

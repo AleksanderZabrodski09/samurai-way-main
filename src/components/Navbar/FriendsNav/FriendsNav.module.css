@@ -1,0 +1,13 @@
+/*.friend img{*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    border-radius: 50%;*/
+/*    object-fit: cover;*/
+/*}*/
+
+.friendRow{
+    display: flex;
+gap: 5px;
+    font-size: 10px;
+
+}

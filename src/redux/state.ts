@@ -14,16 +14,26 @@ export type PostsType = {
   message: string
   likeCount: number
 }
-type PostsArrayType={
+export type PostsArrayType={
   posts:PostsType[]
 }
-type DialogsArraysType={
+export type FriendsNavItemType={
+  id: number
+  name: string
+}
+
+export type DialogsArraysType={
   dialogsDate: DialogsItemType[]
   messagesDate: MessagesItemType[]
 }
+export type FriendsNavType={
+  friends:FriendsNavItemType[]
+}
+
 export type StateType = {
   profilePage:PostsArrayType
   dialogsPage: DialogsArraysType
+  sideBar: FriendsNavType
 }
 
 
@@ -48,5 +58,13 @@ export let state: StateType = {
       {id: 2, message: 'How are you going?'},
       {id: 3, message: 'I am fine'}
     ]
-  }
+  },
+  sideBar: {
+    friends:[
+    {id: 1, name: 'Robert'},
+    {id: 2, name: 'Barbara'},
+    {id: 3, name: 'Lena'}
+  ]}
+
+
 }
