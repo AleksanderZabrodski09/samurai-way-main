@@ -68,3 +68,10 @@ export let state: StateType = {
 
 
 }
+
+export let addPost = (postMessage:string)=>{
+  debugger;
+  let newPost = {id:5, message:postMessage, likeCount:0};
+  state.profilePage.posts.push(newPost)
+  // setPosts([newPost, ...posts])
+}

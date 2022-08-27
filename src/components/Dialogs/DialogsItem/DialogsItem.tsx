@@ -6,9 +6,6 @@ import {DialogsItemType} from '../../../redux/state';
 
 
 
-
-
-
 export const DialogsItem = (props: DialogsItemType) => {
   let path = '/dialogs/' + props.id;
   return (

@@ -8,15 +8,16 @@ import {Route} from 'react-router-dom';
 import {Music} from './components/Music/Music';
 import {Settings} from './components/Settings/Settings';
 import {News} from './components/News/News';
-import {state, StateType} from './redux/state';
+import {StateType} from './redux/state';
 import {Friends} from './components/Friends/Friends';
 
 
-export type AppType = {
+type PropsType = {
   state: StateType
+  addPost: (postMessage:string)=>void
 }
 
-const App = (props: AppType) => {
+const App = (props: PropsType) => {
   return (
 
       <div className="app-wrapper">
@@ -24,13 +25,17 @@ const App = (props: AppType) => {
         <Navbar friends={props.state.sideBar.friends}/>
         <div className="appWrapperComponents">
           <Route path='/dialogs'
-                 render={() => <Dialogs dialogs={props.state.dialogsPage.dialogsDate} messages={props.state.dialogsPage.messagesDate}
+                 render={() => <Dialogs dialogsDate={props.state.dialogsPage.dialogsDate} messagesDate={props.state.dialogsPage.messagesDate}
                  />}/>
-          <Route path='/profile' render={() => <Profile posts={props.state.profilePage.posts}/>}/>
+          <Route path='/profile' render={() => <Profile
+            posts={props.state.profilePage.posts}
+            addPost={props.addPost}
+          />}
+          />
           <Route path='/news' render={() => <News/>}/>
           <Route path='/music' render={() => <Music/>}/>
           <Route path='/settings' render={() => <Settings/>}/>
-          <Route path='/friends' render={() => <Friends />}/>
+          <Route path='/friends' render={() => <Friends friends={props.state.sideBar.friends}/>}/>
         </div>
       </div>
 

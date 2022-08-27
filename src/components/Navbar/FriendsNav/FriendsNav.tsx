@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './FriendsNav.module.css';
 import {FriendsNavItem} from './FriendsNavItem/FriendsNavItem';
-// import {FriendsType} from '../Navbar';
 import {FriendsNavType} from '../../../redux/state'
 
 

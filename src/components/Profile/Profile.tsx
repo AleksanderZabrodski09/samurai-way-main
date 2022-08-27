@@ -2,21 +2,22 @@ import React from 'react';
 import s from './Profile.module.css';
 import {MyPosts} from './MyPosts/MyPosts';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import {PostsType, StateType} from '../../redux/state';
+import { PostsType} from '../../redux/state';
 
 
-
-type ProfileType ={
-  posts:PostsType[]
+type PropsType = {
+  posts: PostsType[]
+  addPost:(postMessage:string)=>void
 }
 
-export const Profile = (props:ProfileType) => {
+export const Profile = (props: PropsType) => {
   return (
     <main className={s.main}>
       <ProfileInfo/>
       <MyPosts
         title={'My posts'}
         posts={props.posts}
+        addPost={props.addPost}
       />
     </main>
   )
