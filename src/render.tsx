@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
- import {addPost, StateType} from './redux/state';
+ import {addPost, StateType, upDateNewPostText} from './redux/state';
  import {BrowserRouter} from 'react-router-dom';
 
 // addPost('hello guys')
@@ -13,7 +13,7 @@ import App from './App';
        <App
          state={state}
          addPost={addPost}
-         // newTextChange={newTextChange}
+         upDateNewPostText={upDateNewPostText}
        />
      </BrowserRouter>,
      document.getElementById('root')

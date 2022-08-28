@@ -15,25 +15,25 @@ export type PostsType = {
   message: string
   likeCount: number
 }
-export type PostsArrayType={
-  // messageForNewPost:string
-  posts:PostsType[]
+export type PostsArrayType = {
+  posts: PostsType[]
+  newPostText: string
 }
-export type FriendsNavItemType={
+export type FriendsNavItemType = {
   id: number
   name: string
 }
 
-export type DialogsArraysType={
+export type DialogsArraysType = {
   dialogsDate: DialogsItemType[]
   messagesDate: MessagesItemType[]
 }
-export type FriendsNavType={
-  friends:FriendsNavItemType[]
+export type FriendsNavType = {
+  friends: FriendsNavItemType[]
 }
 
 export type StateType = {
-  profilePage:PostsArrayType
+  profilePage: PostsArrayType
   dialogsPage: DialogsArraysType
   sideBar: FriendsNavType
 }
@@ -41,11 +41,11 @@ export type StateType = {
 
 export let state: StateType = {
   profilePage: {
-    // messageForNewPost:'',
     posts: [
       {id: 1, message: "How are you?", likeCount: 19},
       {id: 2, message: "It's my first post?", likeCount: 15}
-    ]
+    ],
+    newPostText: ''
   },
   dialogsPage: {
     dialogsDate: [
@@ -63,24 +63,25 @@ export let state: StateType = {
     ]
   },
   sideBar: {
-    friends:[
-    {id: 1, name: 'Robert'},
-    {id: 2, name: 'Barbara'},
-    {id: 3, name: 'Lena'}
-  ]}
+    friends: [
+      {id: 1, name: 'Robert'},
+      {id: 2, name: 'Barbara'},
+      {id: 3, name: 'Lena'}
+    ]
+  }
 
 
 }
 
-export let addPost = (postMessage:string)=>{
-  const newPost:PostsType = {id:new Date().getTime(), message:postMessage, likeCount:0};
+export let addPost = (postMessage: string) => {
+  const newPost: PostsType = {id: new Date().getTime(), message: postMessage, likeCount: 0};
 
   state.profilePage.posts.push(newPost)
-  // setPosts([newPost, ...posts])
-renderEntireTree(state);
+  state.profilePage.newPostText='';
+  renderEntireTree(state);
 }
 
-// export const newTextChange=(newText:string)=>{
-// state.profilePage.messageForNewPost = newText
-//   renderEntireTree(state);
-// }
+export const upDateNewPostText = (newText: string) => {
+  state.profilePage.newPostText = newText
+  renderEntireTree(state);
+}

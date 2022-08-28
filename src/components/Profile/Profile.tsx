@@ -2,14 +2,13 @@ import React from 'react';
 import s from './Profile.module.css';
 import {MyPosts} from './MyPosts/MyPosts';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import { PostsType} from '../../redux/state';
+import {PostsArrayType, PostsType} from '../../redux/state';
 
 
 type PropsType = {
-  posts: PostsType[]
+  profilePage: PostsArrayType
   addPost:(postMessage:string)=>void
-  // message:string
-  // newTextChange:(newText:string)=>void
+  upDateNewPostText:(newText:string)=>void
 }
 
 export const Profile = (props: PropsType) => {
@@ -18,8 +17,10 @@ export const Profile = (props: PropsType) => {
       <ProfileInfo/>
       <MyPosts
         title={'My posts'}
-        posts={props.posts}
+        posts={props.profilePage.posts}
         addPost={props.addPost}
+        newPostText={props.profilePage.newPostText}
+        upDateNewPostText={props.upDateNewPostText}
         // message={props.message}
         // newTextChange={props.newTextChange}
       />

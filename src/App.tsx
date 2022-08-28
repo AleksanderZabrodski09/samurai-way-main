@@ -15,7 +15,7 @@ import {Friends} from './components/Friends/Friends';
 type PropsType = {
   state: StateType
   addPost: (postMessage:string)=>void
-  // newTextChange:(newText:string)=>void
+  upDateNewPostText:(newText:string)=>void
 }
 
 const App = (props: PropsType) => {
@@ -29,10 +29,10 @@ const App = (props: PropsType) => {
                  render={() => <Dialogs dialogsDate={props.state.dialogsPage.dialogsDate} messagesDate={props.state.dialogsPage.messagesDate}
                  />}/>
           <Route path='/profile' render={() => <Profile
-            posts={props.state.profilePage.posts}
+            profilePage={props.state.profilePage}
             addPost={props.addPost}
-            // message={props.state.profilePage.messageForNewPost}
-            // newTextChange={props.newTextChange}
+            upDateNewPostText={props.upDateNewPostText}
+
           />}
           />
           <Route path='/news' render={() => <News/>}/>
