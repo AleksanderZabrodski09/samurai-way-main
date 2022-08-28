@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {ChangeEvent, useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post} from './Post/Post';
 import {PostsType} from '../../../redux/state';
@@ -14,19 +14,23 @@ type MyPostsType = {
 
 
 export const MyPosts = (props: MyPostsType) => {
-  let postElement = props.posts.map(p =>
-    <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)
+  // const postElement = props.posts.map(p =>
+  //   <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)
 
-  const newPostElement = React.createRef<HTMLTextAreaElement>();
+  // const newPostElement = React.createRef<HTMLTextAreaElement>();
+  // let addPost = () => {
+  //   // (*we checked with .? optional chain*)
+  //   if (newPostElement.current) {
+  //     props.addPost(newPostElement.current.value)
+  //     props.upDateNewPostText('');
+  //
+  //   }
+  // }
 
   let addPost = () => {
-    // (*we checked with .? optional chain*)
-    if (newPostElement.current) {
-      props.addPost(newPostElement.current.value)
+      props.addPost(props.newPostText)
       props.upDateNewPostText('');
-
     }
-  }
 
   // let addPost = () => {
   //   // (*we checked with .? optional chain*)
@@ -43,14 +47,18 @@ export const MyPosts = (props: MyPostsType) => {
   //   }
   // }
 
-const onPostChange=()=>{
-  //   let text = newPostElement.current?.value
-  // props.upDateNewPostText(text)
-  if (newPostElement.current) {
-    props.upDateNewPostText(newPostElement.current.value)
+// const onPostChange=()=>{
+//   //   let text = newPostElement.current?.value
+//   // props.upDateNewPostText(text)
+//   if (newPostElement.current) {
+//     props.upDateNewPostText(newPostElement.current.value)
+//
+//   }
 
+  const onPostChangeHandler=(e:ChangeEvent<HTMLTextAreaElement>)=>{
+    props.upDateNewPostText(e.currentTarget.value)
   }
-}
+
 
   return (
     <div className={s.myPosts}>
@@ -59,18 +67,22 @@ const onPostChange=()=>{
         <div>
           <textarea
             value={props.newPostText}
-            onChange={onPostChange}
-            ref={newPostElement}
+            onChange={onPostChangeHandler}
+            // ref={newPostElement}
             placeholder={'new post'}
             autoFocus
           ></textarea>
           <div>
-            <button className={s.button} onClick={addPost}>add post</button>
+            <button
+              className={s.button}
+              onClick={addPost}
+            >add post</button>
           </div>
 
         </div>
         <div className={s.posts}>
-          {postElement}
+          {props.posts.map(p =>
+            <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)}
         </div>
       </div>
     </div>

@@ -16,7 +16,10 @@ type PropsType = {
   state: StateType
   addPost: (postMessage:string)=>void
   upDateNewPostText:(newText:string)=>void
+  addMessage:()=>void
+  upDateNewMessageText:(newMessage:string)=>void
 }
+
 
 const App = (props: PropsType) => {
   return (
@@ -26,12 +29,18 @@ const App = (props: PropsType) => {
         <Navbar friends={props.state.sideBar.friends}/>
         <div className="appWrapperComponents">
           <Route path='/dialogs'
-                 render={() => <Dialogs dialogsDate={props.state.dialogsPage.dialogsDate} messagesDate={props.state.dialogsPage.messagesDate}
+                 render={() => <Dialogs
+                   dialogsPage={props.state.dialogsPage}
+                   // messagesDate={props.state.dialogsPage}
+                   addMessage={props.addMessage}
+                   upDateNewMessageText={props.upDateNewMessageText}
+                   newMessageText={props.state.dialogsPage.newMessageText}
                  />}/>
           <Route path='/profile' render={() => <Profile
             profilePage={props.state.profilePage}
             addPost={props.addPost}
             upDateNewPostText={props.upDateNewPostText}
+
 
           />}
           />

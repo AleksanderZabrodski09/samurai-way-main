@@ -7,6 +7,4 @@ import './index.css';
 // addPost('hello guys')
 
 
-
-
  renderEntireTree(state);

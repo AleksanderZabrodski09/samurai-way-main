@@ -27,6 +27,7 @@ export type FriendsNavItemType = {
 export type DialogsArraysType = {
   dialogsDate: DialogsItemType[]
   messagesDate: MessagesItemType[]
+  newMessageText: string
 }
 export type FriendsNavType = {
   friends: FriendsNavItemType[]
@@ -60,7 +61,8 @@ export let state: StateType = {
       {id: 1, message: 'Hi'},
       {id: 2, message: 'How are you going?'},
       {id: 3, message: 'I am fine'}
-    ]
+    ],
+    newMessageText: ''
   },
   sideBar: {
     friends: [
@@ -76,12 +78,24 @@ export let state: StateType = {
 export let addPost = (postMessage: string) => {
   const newPost: PostsType = {id: new Date().getTime(), message: postMessage, likeCount: 0};
 
-  state.profilePage.posts.push(newPost)
-  state.profilePage.newPostText='';
+  state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = 'gh';
   renderEntireTree(state);
 }
 
 export const upDateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText
+  renderEntireTree(state);
+}
+
+export let addMessage = () => {
+  // debugger
+  const newMessage: MessagesItemType = {id: new Date().getTime(), message: state.dialogsPage.newMessageText};
+  state.dialogsPage.messagesDate.push(newMessage);
+  state.dialogsPage.newMessageText = '';
+  renderEntireTree(state);
+}
+export const upDateNewMessageText = (newMessage: string) => {
+  state.dialogsPage.newMessageText = newMessage;
   renderEntireTree(state);
 }
