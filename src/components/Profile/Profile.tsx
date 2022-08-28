@@ -8,6 +8,8 @@ import { PostsType} from '../../redux/state';
 type PropsType = {
   posts: PostsType[]
   addPost:(postMessage:string)=>void
+  // message:string
+  // newTextChange:(newText:string)=>void
 }
 
 export const Profile = (props: PropsType) => {
@@ -18,6 +20,8 @@ export const Profile = (props: PropsType) => {
         title={'My posts'}
         posts={props.posts}
         addPost={props.addPost}
+        // message={props.message}
+        // newTextChange={props.newTextChange}
       />
     </main>
   )

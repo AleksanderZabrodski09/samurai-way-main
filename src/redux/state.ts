@@ -1,3 +1,4 @@
+import {renderEntireTree} from '../render';
 
 
 export type DialogsItemType = {
@@ -15,6 +16,7 @@ export type PostsType = {
   likeCount: number
 }
 export type PostsArrayType={
+  // messageForNewPost:string
   posts:PostsType[]
 }
 export type FriendsNavItemType={
@@ -39,6 +41,7 @@ export type StateType = {
 
 export let state: StateType = {
   profilePage: {
+    // messageForNewPost:'',
     posts: [
       {id: 1, message: "How are you?", likeCount: 19},
       {id: 2, message: "It's my first post?", likeCount: 15}
@@ -70,8 +73,14 @@ export let state: StateType = {
 }
 
 export let addPost = (postMessage:string)=>{
-  debugger;
-  let newPost = {id:5, message:postMessage, likeCount:0};
+  const newPost:PostsType = {id:new Date().getTime(), message:postMessage, likeCount:0};
+
   state.profilePage.posts.push(newPost)
   // setPosts([newPost, ...posts])
+renderEntireTree(state);
 }
+
+// export const newTextChange=(newText:string)=>{
+// state.profilePage.messageForNewPost = newText
+//   renderEntireTree(state);
+// }

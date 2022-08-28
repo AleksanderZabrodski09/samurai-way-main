@@ -15,6 +15,7 @@ import {Friends} from './components/Friends/Friends';
 type PropsType = {
   state: StateType
   addPost: (postMessage:string)=>void
+  // newTextChange:(newText:string)=>void
 }
 
 const App = (props: PropsType) => {
@@ -30,6 +31,8 @@ const App = (props: PropsType) => {
           <Route path='/profile' render={() => <Profile
             posts={props.state.profilePage.posts}
             addPost={props.addPost}
+            // message={props.state.profilePage.messageForNewPost}
+            // newTextChange={props.newTextChange}
           />}
           />
           <Route path='/news' render={() => <News/>}/>
