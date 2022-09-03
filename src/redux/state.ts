@@ -1,4 +1,4 @@
-import {renderEntireTree} from '../render';
+
 
 
 export type DialogsItemType = {
@@ -89,7 +89,6 @@ export const upDateNewPostText = (newText: string) => {
 }
 
 export let addMessage = () => {
-  // debugger
   const newMessage: MessagesItemType = {id: new Date().getTime(), message: state.dialogsPage.newMessageText};
   state.dialogsPage.messagesDate.push(newMessage);
   state.dialogsPage.newMessageText = '';
