@@ -1,5 +1,6 @@
-
-
+let renderEntireTree = () => {
+  console.log('State is changed')
+}
 
 export type DialogsItemType = {
   id: number
@@ -75,26 +76,34 @@ export let state: StateType = {
 
 }
 
-export let addPost = (postMessage: string) => {
+// @ts-ignore
+window.state = state;
+
+export const addPost = (postMessage: string) => {
   const newPost: PostsType = {id: new Date().getTime(), message: postMessage, likeCount: 0};
 
   state.profilePage.posts.push(newPost);
   state.profilePage.newPostText = 'gh';
-  renderEntireTree(state);
+  renderEntireTree();
 }
 
 export const upDateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText
-  renderEntireTree(state);
+  renderEntireTree();
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
   const newMessage: MessagesItemType = {id: new Date().getTime(), message: state.dialogsPage.newMessageText};
   state.dialogsPage.messagesDate.push(newMessage);
   state.dialogsPage.newMessageText = '';
-  renderEntireTree(state);
+  renderEntireTree();
 }
 export const upDateNewMessageText = (newMessage: string) => {
   state.dialogsPage.newMessageText = newMessage;
-  renderEntireTree(state);
+  renderEntireTree();
+}
+
+
+export const subscribe = (observer:()=>void) => {
+  renderEntireTree=observer
 }
