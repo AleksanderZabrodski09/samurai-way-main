@@ -9,6 +9,10 @@ type DialogItemType = {
   name: string
   id: number
 }
+// type PropsType = {
+//   name: DialogItemType
+//   id: DialogItemType
+// }
 
 export const DialogItem = (props: DialogItemType) => {
   let path = '/dialogs/' + props.id;
