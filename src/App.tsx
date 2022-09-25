@@ -8,17 +8,12 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {News} from './components/News/News';
 import {Music} from './components/Music/Music';
 import {Settings} from './components/Settings/Settings';
-import {StateType} from './index';
-import {PostType} from './components/Profile/MyPosts/Post/Post';
+import {RootStateType} from './redux/state';
 
 
-// type PropsType = {
-//   postsDate:PostType[]
-//   dialogsDate: DialogsDateType[]
-//   messagesDate: MessagesDateType[]
-// }
-type PropsType = StateType
-
+type PropsType = {
+ state:RootStateType
+}
 
 
 const App = (props: PropsType) => {
@@ -28,10 +23,10 @@ const App = (props: PropsType) => {
         <Header/>
         <Navbar/>
         <div className="appWrapperContent">
-          <Route path='/profile' render={() => <Profile postsDate={props.postsDate}/>}/>
+          <Route path='/profile' render={() => <Profile postsDate={props.state.profilePage.posts}/>}/>
           <Route path='/dialogs' render={() => <Dialogs
-            dialogs={props.dialogsDate}
-            messages={props.messagesDate}
+            dialogs={props.state.dialogsPage.dialogsDate}
+            messages={props.state.dialogsPage.messagesDate}
           />}/>
           <Route path='/news' render={() => <News/>}/>
           <Route path='/music' render={() => <Music/>}/>
