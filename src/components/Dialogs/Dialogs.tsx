@@ -5,10 +5,9 @@ import {Message} from './Messages/Message';
 import {DialogsDateType, MessagesDateType} from '../../redux/state';
 
 
-
 type PropsType = {
-  dialogs:DialogsDateType[]
-  messages:MessagesDateType[]
+  dialogs: DialogsDateType[]
+  messages: MessagesDateType[]
 }
 
 export const Dialogs = (props: PropsType) => {
@@ -21,7 +20,9 @@ export const Dialogs = (props: PropsType) => {
       </div>
       <div className={s.messages}>
         {
-          props.messages.map((m) => <Message key={m.id} id={m.id} message={m.message}/>)
+          props.messages.map((m, i) => <div className={i % 2 === 0 ? s.right : s.left}><Message key={m.id} id={m.id}
+                                                                                                message={m.message}/>
+          </div>)
         }
 
       </div>

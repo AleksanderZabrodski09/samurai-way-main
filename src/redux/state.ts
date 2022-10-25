@@ -30,7 +30,15 @@ export type DialogsPageType={
    messagesDate:MessagesDateType[]
 
 }
-export type SidebarType={}
+
+
+export type FriendsDateType = {
+   id: number
+   name: string
+}
+export type SidebarType={
+   friends:FriendsDateType[]
+}
 
 export type RootStateType={
    profilePage:ProfilePageType
@@ -62,7 +70,13 @@ export type RootStateType={
          {id: 5, message: 'I am great!'},
       ]
    },
-   sidebar: {}
+   sidebar: {
+      friends:[
+         {id: 1, name: 'Robert'},
+         {id: 2, name: 'Andrzej'},
+         {id: 3, name: 'Barbara'}
+      ]
+   }
 }
 
 

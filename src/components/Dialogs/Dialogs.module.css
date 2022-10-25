@@ -11,18 +11,16 @@
 
 }
 
-.dialogsItems .active {
-    color: gold
-}
-.dialog a{
-    color: white;
-}
 
 .messages {
     padding: 10px;
 
 }
 
-.message {
-
+.left {
+display: flex;
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
 }

@@ -1,0 +1,7 @@
+
+.friendsRow{
+    display: flex;
+    gap: 8px;
+    /*flex-direction: column;*/
+    font-size: 10px;
+}

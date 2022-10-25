@@ -1,0 +1,18 @@
+
+
+.dialog a{
+  color: white;
+
+}
+.dialog .active {
+  color: gold;
+
+}
+
+
+.dialog img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}

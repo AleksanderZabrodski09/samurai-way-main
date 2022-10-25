@@ -1,14 +1,43 @@
 .nav {
-  grid-area: nav;
-  background-color:#002635;
-  padding: 20px;
+    grid-area: nav;
+    background-color: #002635;
+    padding: 20px;
 }
 
-.item a{
-  color: #ffffff;
-  text-decoration: none;
+.item a {
+    color: #ffffff;
+    text-decoration: none;
 }
+
 .item a.active {
-  color: gold;
-  font-weight: bold;
+    color: gold;
+    font-weight: bold;
+}
+
+.friends {
+    margin-top: 40px;
+    font-size: 28px;
+    /*display: flex;*/
+}
+
+/*.friends img {*/
+/*    height: 30px;*/
+/*    weight: 30px;*/
+/*    border-radius: 50%;*/
+/*    object-fit: cover;*/
+/*}*/
+.avatar img {
+    height: 30px;
+    weight: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.avatar{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.titleFriends{
+    margin-bottom: 20px;
 }
