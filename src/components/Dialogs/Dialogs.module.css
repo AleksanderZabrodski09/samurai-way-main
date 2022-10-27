@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     color: white;
-
+    margin-bottom: 40px;
 }
 
 .dialogsItems {
@@ -18,8 +18,9 @@
 }
 
 .left {
-display: flex;
+    display: flex;
 }
+
 .right {
     display: flex;
     justify-content: flex-end;

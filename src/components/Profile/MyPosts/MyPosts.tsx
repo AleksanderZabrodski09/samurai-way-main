@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post, PostType} from './Post/Post';
 
 type PropsType = {
   title: string
-  posts:PostType[]
+  posts: PostType[]
 }
 // type PostsType = {
 //   id: number,
@@ -16,17 +16,38 @@ type PropsType = {
 //   {id: 2, message: "It's my first post", likeCount: 15}
 // ]
 export const MyPosts = (props: PropsType) => {
-  return (
 
+  // let newPostElement=React.createRef<HTMLTextAreaElement>()
+  let newPostElement = useRef<HTMLTextAreaElement>(null)
+
+  let addPost = () => {
+    let text = newPostElement.current?.value
+    alert(text)
+  }
+  // let addPost = () => {
+  //   let text = newPostElement.current?.value
+  //   if(newPostElement.current?.value!==null){
+  //     props.addPost(text)
+  //   }
+  //   useRef(text)
+  // }
+
+
+  return (
     <div className={s.postsBlock}>
       <h2>{props.title}</h2>
       <div>
-        <div><textarea>new post</textarea></div>
-        <button>Send</button>
+        <div>
+          <textarea
+          ref={newPostElement}
+          placeholder={'new post'} autoFocus>
+          </textarea>
+        </div>
+        <button onClick={addPost}>Send</button>
       </div>
       <div className={s.posts}>
         {
-          props.posts.map(p=><Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount} />)
+          props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)
         }
 
       </div>
