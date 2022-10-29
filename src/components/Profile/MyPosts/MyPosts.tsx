@@ -5,6 +5,7 @@ import {Post, PostType} from './Post/Post';
 type PropsType = {
   title: string
   posts: PostType[]
+  addPost:(messagePost:string)=>void
 }
 // type PostsType = {
 //   id: number,
@@ -22,6 +23,7 @@ export const MyPosts = (props: PropsType) => {
 
   let addPost = () => {
     let text = newPostElement.current?.value
+    props.addPost
     alert(text)
   }
   // let addPost = () => {
@@ -49,7 +51,6 @@ export const MyPosts = (props: PropsType) => {
         {
           props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likeCount={p.likeCount}/>)
         }
-
       </div>
     </div>
   )

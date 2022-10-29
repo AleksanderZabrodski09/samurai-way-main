@@ -13,29 +13,30 @@ import {Friends} from './components/Friends/Friends';
 
 
 type PropsType = {
- state:RootStateType
+  state: RootStateType
+  addPost: (messagePost: string) => void
 }
 
 
 const App = (props: PropsType) => {
   return (
-      <div className="app-wrapper">
-        <Header/>
-        <Navbar friends={props.state.sidebar.friends}/>
+    <div className="app-wrapper">
+      <Header/>
+      <Navbar friends={props.state.sidebar.friends}/>
 
-        {/*<Route path='/friends' render={() => <Navbar friends={props.state.sidebar}/>}/>*/}
-        <div className="appWrapperContent">
-          <Route path='/profile' render={() => <Profile postsDate={props.state.profilePage.posts}/>}/>
-          <Route path='/dialogs' render={() => <Dialogs
-            dialogs={props.state.dialogsPage.dialogsDate}
-            messages={props.state.dialogsPage.messagesDate}
-          />}/>
-          <Route path='/news' render={() => <News/>}/>
-          <Route path='/music' render={() => <Music/>}/>
-          <Route path='/settings' render={() => <Settings/>}/>
-          <Route path='/friends' render={() => <Friends  friends={props.state.sidebar.friends}/>}/>
-        </div>
+      {/*<Route path='/friends' render={() => <Navbar friends={props.state.sidebar}/>}/>*/}
+      <div className="appWrapperContent">
+        <Route path='/profile' render={() => <Profile postsDate={props.state.profilePage.posts} addPost={props.addPost}/>}/>
+        <Route path='/dialogs' render={() => <Dialogs
+          dialogs={props.state.dialogsPage.dialogsDate}
+          messages={props.state.dialogsPage.messagesDate}
+        />}/>
+        <Route path='/news' render={() => <News/>}/>
+        <Route path='/music' render={() => <Music/>}/>
+        <Route path='/settings' render={() => <Settings/>}/>
+        <Route path='/friends' render={() => <Friends friends={props.state.sidebar.friends}/>}/>
       </div>
+    </div>
   )
 }
 

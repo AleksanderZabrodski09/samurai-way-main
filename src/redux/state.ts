@@ -80,4 +80,13 @@ export type RootStateType={
 }
 
 
+
+export const addPost =(messagePost:string)=>{
+   let newPost:PostsType = {id: 3, message: messagePost, likeCount: 0};
+   state.profilePage.posts.push(newPost)
+}
+
+
+
+
 export default state;
