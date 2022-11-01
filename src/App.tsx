@@ -15,6 +15,7 @@ import {Friends} from './components/Friends/Friends';
 type PropsType = {
   state: RootStateType
   addPost: (messagePost: string) => void
+  addMessage: (messagePost: string) => void
 }
 
 
@@ -26,10 +27,14 @@ const App = (props: PropsType) => {
 
       {/*<Route path='/friends' render={() => <Navbar friends={props.state.sidebar}/>}/>*/}
       <div className="appWrapperContent">
-        <Route path='/profile' render={() => <Profile postsDate={props.state.profilePage.posts} addPost={props.addPost}/>}/>
+        <Route path='/profile' render={() => <Profile
+          postsDate={props.state.profilePage.posts}
+          addPost={props.addPost}
+        />}/>
         <Route path='/dialogs' render={() => <Dialogs
           dialogs={props.state.dialogsPage.dialogsDate}
           messages={props.state.dialogsPage.messagesDate}
+          addMessage={props.addMessage}
         />}/>
         <Route path='/news' render={() => <News/>}/>
         <Route path='/music' render={() => <Music/>}/>

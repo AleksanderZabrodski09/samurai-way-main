@@ -5,7 +5,7 @@ import {Post, PostType} from './Post/Post';
 type PropsType = {
   title: string
   posts: PostType[]
-  addPost:(messagePost:string)=>void
+  addPost: (messagePost: string) => void
 }
 // type PostsType = {
 //   id: number,
@@ -19,20 +19,20 @@ type PropsType = {
 export const MyPosts = (props: PropsType) => {
 
   // let newPostElement=React.createRef<HTMLTextAreaElement>()
-  let newPostElement = useRef<HTMLTextAreaElement>(null)
-
-  let addPost = () => {
-    let text = newPostElement.current?.value
-    props.addPost
-    alert(text)
-  }
   // let addPost = () => {
-  //   let text = newPostElement.current?.value
-  //   if(newPostElement.current?.value!==null){
-  //     props.addPost(text)
+  //   if (newPostElement.current) {
+  //     props.addPost(newPostElement.current.value)
   //   }
-  //   useRef(text)
   // }
+
+  let newPostElement = useRef<HTMLTextAreaElement>(null);
+  //
+  const addPost = () => {
+    if (newPostElement.current) {
+      props.addPost(newPostElement.current.value);
+      newPostElement.current.value = '';
+    }
+  }
 
 
   return (
@@ -41,8 +41,8 @@ export const MyPosts = (props: PropsType) => {
       <div>
         <div>
           <textarea
-          ref={newPostElement}
-          placeholder={'new post'} autoFocus>
+            ref={newPostElement}
+            placeholder={'new post'} autoFocus>
           </textarea>
         </div>
         <button onClick={addPost}>Send</button>

@@ -85,6 +85,10 @@ export const addPost =(messagePost:string)=>{
    let newPost:PostsType = {id: 3, message: messagePost, likeCount: 0};
    state.profilePage.posts.push(newPost)
 }
+export const addMessage =(messagePost:string)=>{
+   let newMessage:MessagesDateType = {id: 3, message: messagePost};
+   state.dialogsPage.messagesDate.push(newMessage)
+}
 
 
 

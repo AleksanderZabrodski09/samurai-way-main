@@ -8,17 +8,20 @@ import {DialogsDateType, MessagesDateType} from '../../redux/state';
 type PropsType = {
   dialogs: DialogsDateType[]
   messages: MessagesDateType[]
+  addMessage: (messagePost: string) => void
 }
 
 export const Dialogs = (props: PropsType) => {
 
 
-  // let newMessageElement =  React.createRef<HTMLTextAreaElement>()
-  let newMessageElement =  useRef<HTMLTextAreaElement>(null)
+  let newMessageElement =  React.createRef<HTMLTextAreaElement>()
+  // let newMessageElement =  useRef<HTMLTextAreaElement>(null)
 
 const addMessage=()=>{
-  let text= newMessageElement.current?.value
-    alert(text)
+  if (newMessageElement.current) {
+    props.addMessage(newMessageElement.current.value);
+    newMessageElement.current.value = '';
+  }
 }
   return (
     <div className={s.dialogs}>
