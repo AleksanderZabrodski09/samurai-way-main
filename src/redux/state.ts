@@ -9,6 +9,8 @@
 //   | MessagesDateType[]
 
 
+import {rerenderEntireTree} from '../render';
+
 export type PostsType={
    id: number
    message: string
@@ -84,10 +86,12 @@ export type RootStateType={
 export const addPost =(messagePost:string)=>{
    let newPost:PostsType = {id: 3, message: messagePost, likeCount: 0};
    state.profilePage.posts.push(newPost)
+   rerenderEntireTree(state)
 }
-export const addMessage =(messagePost:string)=>{
-   let newMessage:MessagesDateType = {id: 3, message: messagePost};
+export const addMessage =(messageUser:string)=>{
+   let newMessage:MessagesDateType = {id: 3, message: messageUser};
    state.dialogsPage.messagesDate.push(newMessage)
+   rerenderEntireTree(state)
 }
 
 

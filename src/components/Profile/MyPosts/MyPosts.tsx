@@ -18,13 +18,6 @@ type PropsType = {
 // ]
 export const MyPosts = (props: PropsType) => {
 
-  // let newPostElement=React.createRef<HTMLTextAreaElement>()
-  // let addPost = () => {
-  //   if (newPostElement.current) {
-  //     props.addPost(newPostElement.current.value)
-  //   }
-  // }
-
   let newPostElement = useRef<HTMLTextAreaElement>(null);
   //
   const addPost = () => {
@@ -33,6 +26,14 @@ export const MyPosts = (props: PropsType) => {
       newPostElement.current.value = '';
     }
   }
+  // let newPostElement=React.createRef<HTMLTextAreaElement>()
+  // let addPost = () => {
+  //   if (newPostElement.current) {
+  //     props.addPost(newPostElement.current.value)
+  //   }
+  // }
+
+
 
 
   return (
