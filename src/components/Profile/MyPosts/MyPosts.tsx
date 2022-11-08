@@ -1,11 +1,14 @@
-import React, {useRef} from 'react';
+import React, {ChangeEvent, useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post, PostType} from './Post/Post';
+
 
 type PropsType = {
   title: string
   posts: PostType[]
-  addPost: (messagePost: string) => void
+  addPost: () => void
+  newTextPost: string
+  updateNewTextPost: (text: string) => void
 }
 // type PostsType = {
 //   id: number,
@@ -18,20 +21,36 @@ type PropsType = {
 // ]
 export const MyPosts = (props: PropsType) => {
 
+  // let newPostElement=React.createRef<HTMLTextAreaElement>()
+  // let addPost = () => {
+  //   props.addPost()
+  //   // if (newPostElement.current) {
+  //   //   props.addPost(newPostElement.current.value)
+  //   // }
+  // }
+
   let newPostElement = useRef<HTMLTextAreaElement>(null);
   //
   const addPost = () => {
-    if (newPostElement.current) {
-      props.addPost(newPostElement.current.value);
-      newPostElement.current.value = '';
-    }
+    props.addPost()
+    // props.updateNewTextPost('')
+
+    // if (newPostElement.current) {
+    //   props.addPost(newPostElement.current.value);
+    // }
   }
-  // let newPostElement=React.createRef<HTMLTextAreaElement>()
-  // let addPost = () => {
-  //   if (newPostElement.current) {
-  //     props.addPost(newPostElement.current.value)
-  //   }
+
+  // const onChangeNewPost=(e:ChangeEvent<HTMLTextAreaElement>)=>{
+  //   props.updateNewTextPost(e.currentTarget.value)
   // }
+  const onChangeNewPost = () => {
+    if (newPostElement.current) {
+      const text = newPostElement.current.value
+      props.updateNewTextPost(text)
+    }
+
+  }
+
 
 
 
@@ -42,8 +61,11 @@ export const MyPosts = (props: PropsType) => {
       <div>
         <div>
           <textarea
+            value={props.newTextPost}
             ref={newPostElement}
-            placeholder={'new post'} autoFocus>
+            placeholder={'new post'}
+            onChange={onChangeNewPost}
+            autoFocus>
           </textarea>
         </div>
         <button onClick={addPost}>Send</button>

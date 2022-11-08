@@ -1,14 +1,16 @@
-import React, {useRef} from 'react';
+import React, {ChangeEvent, useRef} from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from './DialogsItem/DialogsItem';
 import {Message} from './Messages/Message';
-import {DialogsDateType, MessagesDateType} from '../../redux/state';
+import {DialogsDateType, DialogsPageType, MessagesDateType} from '../../redux/state';
 
 
 type PropsType = {
   dialogs: DialogsDateType[]
   messages: MessagesDateType[]
-  addMessage: (messagePost: string) => void
+  addMessage: () => void
+  updateNewTextMessage: (text: string) => void
+  newTextMessage: string
 }
 
 export const Dialogs = (props: PropsType) => {
@@ -18,11 +20,22 @@ export const Dialogs = (props: PropsType) => {
   // let newMessageElement =  useRef<HTMLTextAreaElement>(null)
 
 const addMessage=()=>{
-  if (newMessageElement.current) {
-    props.addMessage(newMessageElement.current.value);
-    newMessageElement.current.value = '';
-  }
+  props.addMessage()
+
+  // if (newMessageElement.current) {
+  //   props.addMessage(newMessageElement.current.value);
+  //   newMessageElement.current.value = '';
+  // }
 }
+
+// const onChangeMessage =(e:ChangeEvent<HTMLTextAreaElement>)=>{
+//     props.updateNewTextMessage(e.currentTarget.value)
+// }
+const onChangeMessage =()=>{
+    let newText =  newMessageElement.current as HTMLTextAreaElement
+    props.updateNewTextMessage(newText.value)
+}
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>
@@ -39,7 +52,10 @@ const addMessage=()=>{
       </div>
       <div>
         <div>
-          <textarea ref={newMessageElement}></textarea>
+          <textarea ref={newMessageElement}
+                    value={props.newTextMessage}
+                    onChange={onChangeMessage}
+          />
         </div>
         <button onClick={addMessage}>Send</button>
       </div>

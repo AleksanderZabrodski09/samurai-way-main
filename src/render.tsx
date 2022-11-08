@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addMessage, addPost, RootStateType} from './redux/state';
+import {addMessage, addPost, RootStateType, updateNewTextMessage, updateNewTextPost} from './redux/state';
 import {BrowserRouter} from 'react-router-dom';
 
 
@@ -13,6 +13,8 @@ export let rerenderEntireTree=(state:RootStateType)=>{
         state={state}
         addPost={addPost}
         addMessage={addMessage}
+        updateNewTextPost={updateNewTextPost}
+        updateNewTextMessage={updateNewTextMessage}
       />
     </BrowserRouter>,
 

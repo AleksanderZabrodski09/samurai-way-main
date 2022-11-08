@@ -8,14 +8,17 @@ import {Route} from 'react-router-dom';
 import {News} from './components/News/News';
 import {Music} from './components/Music/Music';
 import {Settings} from './components/Settings/Settings';
-import {RootStateType} from './redux/state';
+import {RootStateType, updateNewTextMessage, updateNewTextPost} from './redux/state';
 import {Friends} from './components/Friends/Friends';
 
 
 type PropsType = {
   state: RootStateType
-  addPost: (messagePost: string) => void
-  addMessage: (messagePost: string) => void
+  addPost: () => void
+  addMessage: () => void
+  updateNewTextPost: (text: string) => void
+  updateNewTextMessage: (text: string) => void
+
 }
 
 
@@ -28,13 +31,16 @@ const App = (props: PropsType) => {
       {/*<Route path='/friends' render={() => <Navbar friends={props.state.sidebar}/>}/>*/}
       <div className="appWrapperContent">
         <Route path='/profile' render={() => <Profile
-          postsDate={props.state.profilePage.posts}
+          profilePage={props.state.profilePage}
           addPost={props.addPost}
+          updateTextPost={props.updateNewTextPost}
         />}/>
         <Route path='/dialogs' render={() => <Dialogs
           dialogs={props.state.dialogsPage.dialogsDate}
           messages={props.state.dialogsPage.messagesDate}
+          newTextMessage={props.state.dialogsPage.newTextMessage}
           addMessage={props.addMessage}
+          updateNewTextMessage={props.updateNewTextMessage}
         />}/>
         <Route path='/news' render={() => <News/>}/>
         <Route path='/music' render={() => <Music/>}/>
