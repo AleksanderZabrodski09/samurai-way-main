@@ -8,7 +8,7 @@ import {Route} from 'react-router-dom';
 import {News} from './components/News/News';
 import {Music} from './components/Music/Music';
 import {Settings} from './components/Settings/Settings';
-import {RootStateType, updateNewTextMessage, updateNewTextPost} from './redux/state';
+import {RootStateType} from './redux/state';
 import {Friends} from './components/Friends/Friends';
 
 
@@ -18,7 +18,6 @@ type PropsType = {
   addMessage: () => void
   updateNewTextPost: (text: string) => void
   updateNewTextMessage: (text: string) => void
-
 }
 
 
@@ -50,6 +49,7 @@ const App = (props: PropsType) => {
     </div>
   )
 }
+
 
 
 export default App;

@@ -1,14 +1,9 @@
-// type StateType = {
-//    dialogsDate: DialogsDateType[]
-//    messagesDate: MessagesDateType[]
-//    postsDate: PostType[]
-// }
-// export type DialogsType =
-//   DialogsDateType[]
-//   | MessagesDateType[]
+import {observe} from 'web-vitals/dist/modules/lib/observe';
 
+let rerenderEntireTree = () => {
+  console.log('state changed')
+}
 
-import {rerenderEntireTree} from '../render';
 
 export type PostsType = {
   id: number
@@ -30,7 +25,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
   dialogsDate: DialogsDateType[]
   messagesDate: MessagesDateType[]
-  newTextMessage:string
+  newTextMessage: string
 
 }
 
@@ -73,7 +68,7 @@ let state: RootStateType = {
       {id: 4, message: 'I am Ok'},
       {id: 5, message: 'I am great!'},
     ],
-    newTextMessage:'type',
+    newTextMessage: 'type',
   },
   sidebar: {
     friends: [
@@ -95,11 +90,11 @@ export const addPost = () => {
   };
   state.profilePage.posts.push(newPost)
   state.profilePage.newTextPost = '';
-  rerenderEntireTree(state)
+  rerenderEntireTree()
 }
 export const updateNewTextPost = (newText: string) => {
   state.profilePage.newTextPost = newText;
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 }
 
 
@@ -107,11 +102,15 @@ export const addMessage = () => {
   let newMessage: MessagesDateType = {id: 3, message: state.dialogsPage.newTextMessage};
   state.dialogsPage.messagesDate.push(newMessage)
   state.dialogsPage.newTextMessage = ''
-  rerenderEntireTree(state)
+  rerenderEntireTree()
 }
-export const updateNewTextMessage=(newMessage:string)=>{
+export const updateNewTextMessage = (newMessage: string) => {
   state.dialogsPage.newTextMessage = newMessage;
-  rerenderEntireTree(state)
+  rerenderEntireTree()
+}
+
+export const subscribe = (observer:()=>void) => {
+  rerenderEntireTree = observer;
 }
 
 
