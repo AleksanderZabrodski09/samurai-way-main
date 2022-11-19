@@ -6,7 +6,7 @@ import {PostsType} from '../../../redux/state';
 type MyPostsType = {
   title: string
   posts: PostsType[]
-  addPost: (postMessage: string) => void
+  addPost: () => void
   newPostText:string
   upDateNewPostText:(newText:string)=>void
 
@@ -28,8 +28,8 @@ export const MyPosts = (props: MyPostsType) => {
   // }
 
   let addPost = () => {
-      props.addPost(props.newPostText)
-      props.upDateNewPostText('');
+      props.addPost()
+      // props.upDateNewPostText('');
     }
 
   // let addPost = () => {

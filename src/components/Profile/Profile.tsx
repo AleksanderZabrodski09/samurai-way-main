@@ -7,7 +7,7 @@ import {PostsArrayType, PostsType} from '../../redux/state';
 
 type PropsType = {
   profilePage: PostsArrayType
-  addPost:(postMessage:string)=>void
+  addPost:()=>void
   upDateNewPostText:(newText:string)=>void
 }
 
