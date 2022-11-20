@@ -1,10 +1,3 @@
-import {observe} from 'web-vitals/dist/modules/lib/observe';
-
-let rerenderEntireTree = () => {
-  console.log('state changed')
-}
-
-
 export type PostsType = {
   id: number
   message: string
@@ -28,8 +21,6 @@ export type DialogsPageType = {
   newTextMessage: string
 
 }
-
-
 export type FriendsDateType = {
   id: number
   name: string
@@ -37,81 +28,130 @@ export type FriendsDateType = {
 export type SidebarType = {
   friends: FriendsDateType[]
 }
-
 export type RootStateType = {
   profilePage: ProfilePageType
   dialogsPage: DialogsPageType
   sidebar: SidebarType
 }
 
-let state: RootStateType = {
-  profilePage: {
-    posts: [
-      {id: 1, message: "How are you?", likeCount: 19},
-      {id: 2, message: "It's my first post", likeCount: 15}
-    ],
-    newTextPost: 'type',
+
+// let state: RootStateType = {
+//   profilePage: {
+//     posts: [
+//       {id: 1, message: "How are you?", likeCount: 19},
+//       {id: 2, message: "It's my first post", likeCount: 15}
+//     ],
+//     newTextPost: 'type',
+//   },
+//   dialogsPage: {
+//     dialogsDate: [
+//       {id: 1, name: 'Robert'},
+//       {id: 2, name: 'Andrzej'},
+//       {id: 3, name: 'Pawel'},
+//       {id: 4, name: 'Marek'},
+//       {id: 5, name: 'Barbara'},
+//       {id: 6, name: 'Jack'}
+//     ],
+//     messagesDate: [
+//       {id: 1, message: 'Hi'},
+//       {id: 2, message: 'How are you going?'},
+//       {id: 3, message: 'I am fine'},
+//       {id: 4, message: 'I am Ok'},
+//       {id: 5, message: 'I am great!'},
+//     ],
+//     newTextMessage: 'type',
+//   },
+//   sidebar: {
+//     friends: [
+//       {id: 1, name: 'Robert'},
+//       {id: 2, name: 'Andrzej'},
+//       {id: 3, name: 'Barbara'}
+//     ]
+//   }
+// }
+
+export type StoreType = {
+  _state: RootStateType
+  updateNewTextPost: (newText: string) => void
+  updateNewTextMessage: (newMessage: string) => void
+  _rerenderEntireTree: () => void
+  addPost: () => void
+  addMessage: () => void
+  subscribe: (observer: () => void) => void
+  getState: () => RootStateType
+}
+const store:StoreType = {
+  _state: {
+    profilePage: {
+      posts: [
+        {id: 1, message: "How are you?", likeCount: 19},
+        {id: 2, message: "It's my first post", likeCount: 15}
+      ],
+      newTextPost: '',
+    },
+    dialogsPage: {
+      dialogsDate: [
+        {id: 1, name: 'Robert'},
+        {id: 2, name: 'Andrzej'},
+        {id: 3, name: 'Pawel'},
+        {id: 4, name: 'Marek'},
+        {id: 5, name: 'Barbara'},
+        {id: 6, name: 'Jack'}
+      ],
+      messagesDate: [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How are you going?'},
+        {id: 3, message: 'I am fine'},
+        {id: 4, message: 'I am Ok'},
+        {id: 5, message: 'I am great!'},
+      ],
+      newTextMessage: '',
+    },
+    sidebar: {
+      friends: [
+        {id: 1, name: 'Robert'},
+        {id: 2, name: 'Andrzej'},
+        {id: 3, name: 'Barbara'}
+      ]
+    }
   },
-  dialogsPage: {
-    dialogsDate: [
-      {id: 1, name: 'Robert'},
-      {id: 2, name: 'Andrzej'},
-      {id: 3, name: 'Pawel'},
-      {id: 4, name: 'Marek'},
-      {id: 5, name: 'Barbara'},
-      {id: 6, name: 'Jack'}
-    ],
-    messagesDate: [
-      {id: 1, message: 'Hi'},
-      {id: 2, message: 'How are you going?'},
-      {id: 3, message: 'I am fine'},
-      {id: 4, message: 'I am Ok'},
-      {id: 5, message: 'I am great!'},
-    ],
-    newTextMessage: 'type',
+  getState() {
+    return this._state
   },
-  sidebar: {
-    friends: [
-      {id: 1, name: 'Robert'},
-      {id: 2, name: 'Andrzej'},
-      {id: 3, name: 'Barbara'}
-    ]
+  _rerenderEntireTree() {
+    console.log('state changed')
+  },
+  addPost() {
+    let newPost: PostsType = {
+      id: 3,
+      message: this._state.profilePage.newTextPost,
+      likeCount: 0
+    };
+    this._state.profilePage.posts.push(newPost)
+    this._state.profilePage.newTextPost = '';
+    this._rerenderEntireTree()
+  },
+  updateNewTextPost(newText: string) {
+    this._state.profilePage.newTextPost = newText;
+    this._rerenderEntireTree();
+  },
+  addMessage() {
+    const newMessage: MessagesDateType = {id: new Date().getTime(), message: this._state.dialogsPage.newTextMessage};
+    this._state.dialogsPage.messagesDate.push(newMessage);
+    this._state.dialogsPage.newTextMessage = '';
+    this._rerenderEntireTree();
+  },
+  updateNewTextMessage(newMessage: string) {
+    this._state.dialogsPage.newTextMessage = newMessage;
+    this._rerenderEntireTree()
+  },
+  subscribe(observer) {
+    this._rerenderEntireTree = observer;
   }
 }
 
+
 // @ts-ignore
-window.state = state;
+window.store = store;
 
-export const addPost = () => {
-  let newPost: PostsType = {
-    id: 3,
-    message: state.profilePage.newTextPost,
-    likeCount: 0
-  };
-  state.profilePage.posts.push(newPost)
-  state.profilePage.newTextPost = '';
-  rerenderEntireTree()
-}
-export const updateNewTextPost = (newText: string) => {
-  state.profilePage.newTextPost = newText;
-  rerenderEntireTree();
-}
-
-
-export const addMessage = () => {
-  let newMessage: MessagesDateType = {id: 3, message: state.dialogsPage.newTextMessage};
-  state.dialogsPage.messagesDate.push(newMessage)
-  state.dialogsPage.newTextMessage = ''
-  rerenderEntireTree()
-}
-export const updateNewTextMessage = (newMessage: string) => {
-  state.dialogsPage.newTextMessage = newMessage;
-  rerenderEntireTree()
-}
-
-export const subscribe = (observer:()=>void) => {
-  rerenderEntireTree = observer;
-}
-
-
-export default state;
+export default store;
