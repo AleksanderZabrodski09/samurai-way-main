@@ -14,11 +14,10 @@ import {Friends} from './components/Friends/Friends';
 
 type PropsType = {
   store:StoreType
-  // state: RootStateType
-  addPost: () => void
-  addMessage: () => void
-  updateNewTextPost: (text: string) => void
-  updateNewTextMessage: (text: string) => void
+  // addPost: () => void
+  // addMessage: () => void
+  // updateNewTextPost: (text: string) => void
+  // updateNewTextMessage: (text: string) => void
 }
 
 
@@ -33,15 +32,15 @@ const App:React.FC<PropsType> = (props) => {
       <div className="appWrapperContent">
         <Route path='/profile' render={() => <Profile
           profilePage={state.profilePage}
-          addPost={props.addPost}
-          updateTextPost={props.updateNewTextPost}
+          addPost={props.store.addPost.bind(props.store)}
+          updateTextPost={props.store.updateNewTextPost.bind(props.store)}
         />}/>
         <Route path='/dialogs' render={() => <Dialogs
           dialogs={state.dialogsPage.dialogsDate}
           messages={state.dialogsPage.messagesDate}
           newTextMessage={state.dialogsPage.newTextMessage}
-          addMessage={props.addMessage}
-          updateNewTextMessage={props.updateNewTextMessage}
+          addMessage={props.store.addMessage.bind(props.store)}
+          updateNewTextMessage={props.store.updateNewTextMessage.bind(props.store)}
         />}/>
         <Route path='/news' render={() => <News/>}/>
         <Route path='/music' render={() => <Music/>}/>

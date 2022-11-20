@@ -74,7 +74,7 @@ export type StoreType = {
   _state: RootStateType
   updateNewTextPost: (newText: string) => void
   updateNewTextMessage: (newMessage: string) => void
-  _rerenderEntireTree: () => void
+  _callSubscriber: () => void
   addPost: () => void
   addMessage: () => void
   subscribe: (observer: () => void) => void
@@ -118,7 +118,7 @@ const store:StoreType = {
   getState() {
     return this._state
   },
-  _rerenderEntireTree() {
+  _callSubscriber() {
     console.log('state changed')
   },
   addPost() {
@@ -129,24 +129,24 @@ const store:StoreType = {
     };
     this._state.profilePage.posts.push(newPost)
     this._state.profilePage.newTextPost = '';
-    this._rerenderEntireTree()
+    this._callSubscriber()
   },
   updateNewTextPost(newText: string) {
     this._state.profilePage.newTextPost = newText;
-    this._rerenderEntireTree();
+    this._callSubscriber();
   },
   addMessage() {
     const newMessage: MessagesDateType = {id: new Date().getTime(), message: this._state.dialogsPage.newTextMessage};
     this._state.dialogsPage.messagesDate.push(newMessage);
     this._state.dialogsPage.newTextMessage = '';
-    this._rerenderEntireTree();
+    this._callSubscriber();
   },
   updateNewTextMessage(newMessage: string) {
     this._state.dialogsPage.newTextMessage = newMessage;
-    this._rerenderEntireTree()
+    this._callSubscriber()
   },
   subscribe(observer) {
-    this._rerenderEntireTree = observer;
+    this._callSubscriber = observer;
   }
 }
 
