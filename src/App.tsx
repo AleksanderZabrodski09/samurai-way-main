@@ -14,10 +14,10 @@ import {StoreType} from './redux/state';
 
 type PropsType = {
   store: StoreType
-  addPost: ()=>void
-  upDateNewPostText:(newText:string)=>void
-  addMessage:()=>void
-  upDateNewMessageText:(newMessage:string)=>void
+  // addPost: ()=>void
+  // upDateNewPostText:(newText:string)=>void
+  // addMessage:()=>void
+  // upDateNewMessageText:(newMessage:string)=>void
 }
 
 
@@ -33,14 +33,14 @@ const App:React.FC<PropsType> = (props) => {
                  render={() => <Dialogs
                    dialogsPage={state.dialogsPage}
                    // messagesDate={props.state.dialogsPage}
-                   addMessage={props.addMessage}
-                   upDateNewMessageText={props.upDateNewMessageText}
+                   addMessage={props.store.addMessage.bind(props.store)}
+                   upDateNewMessageText={props.store.upDateNewMessageText.bind(props.store)}
                    newMessageText={state.dialogsPage.newMessageText}
                  />}/>
           <Route path='/profile' render={() => <Profile
             profilePage={state.profilePage}
-            addPost={props.addPost}
-            upDateNewPostText={props.upDateNewPostText}
+            addPost={props.store.addPost.bind(props.store)}
+            upDateNewPostText={props.store.upDateNewPostText.bind(props.store)}
 
 
           />}

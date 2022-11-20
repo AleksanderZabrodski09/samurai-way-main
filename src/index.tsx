@@ -11,10 +11,10 @@ export let renderEntireTree=()=>{
     <BrowserRouter>
       <App
         store={store}
-        addPost={store.addPost.bind(store)}
-        upDateNewPostText={store.upDateNewPostText.bind(store)}
-        addMessage={store.addMessage.bind(store)}
-        upDateNewMessageText={store.upDateNewMessageText.bind(store)}
+        // addPost={store.addPost.bind(store)}
+        // upDateNewPostText={store.upDateNewPostText.bind(store)}
+        // addMessage={store.addMessage.bind(store)}
+        // upDateNewMessageText={store.upDateNewMessageText.bind(store)}
       />
     </BrowserRouter>,
     document.getElementById('root')
